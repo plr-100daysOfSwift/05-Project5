@@ -14,7 +14,9 @@ class ViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
+
 		if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
 			if let startWords = try? String(contentsOf: startWordsURL) {
 				allWords = startWords.components(separatedBy: "\n")
@@ -32,6 +34,10 @@ class ViewController: UITableViewController {
 		title = allWords.randomElement()
 		usedWords.removeAll(keepingCapacity: true)
 		tableView.reloadData()
+	}
+
+	@objc func promptForAnswer() {
+		// more code
 	}
 
 	// MARK: - Table view data source
