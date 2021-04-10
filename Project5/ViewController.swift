@@ -14,6 +14,7 @@ class ViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
 		if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
 			if let startWords = try? String(contentsOf: startWordsURL) {
 				allWords = startWords.components(separatedBy: "\n")
@@ -24,12 +25,15 @@ class ViewController: UITableViewController {
 			allWords = ["silkworm"]
 		}
 
+		startGame()
+	}
+
 	func startGame() {
 		title = allWords.randomElement()
 		usedWords.removeAll(keepingCapacity: true)
 		tableView.reloadData()
 	}
-	
+
 	// MARK: - Table view data source
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
