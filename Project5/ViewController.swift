@@ -37,7 +37,7 @@ class ViewController: UITableViewController {
 	}
 
 	@objc func promptForAnswer() {
-		// more code
+		let ac = UIAlertController(title: "Enter answer", message: nil, preferredStyle: .alert)
 	}
 
 	// MARK: - Table view data source
