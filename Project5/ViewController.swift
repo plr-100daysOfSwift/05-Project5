@@ -23,6 +23,11 @@ class ViewController: UITableViewController {
 		if allWords.isEmpty {
 			allWords = ["silkworm"]
 		}
+
+	func startGame() {
+		title = allWords.randomElement()
+		usedWords.removeAll(keepingCapacity: true)
+		tableView.reloadData()
 	}
 
 
