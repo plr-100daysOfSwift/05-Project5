@@ -46,6 +46,9 @@ class ViewController: UITableViewController {
 			}
 			self?.submit(answer)
 		}
+
+	func submit(_ answer: String) {
+		// more code here
 	}
 
 	// MARK: - Table view data source
