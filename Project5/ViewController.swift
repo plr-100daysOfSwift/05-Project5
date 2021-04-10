@@ -19,6 +19,10 @@ class ViewController: UITableViewController {
 				allWords = startWords.components(separatedBy: "\n")
 			}
 		}
+
+		if allWords.isEmpty {
+			allWords = ["silkworm"]
+		}
 	}
 
 
