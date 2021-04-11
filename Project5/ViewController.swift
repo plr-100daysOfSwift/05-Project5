@@ -55,6 +55,18 @@ class ViewController: UITableViewController {
 		// more code here
 	}
 
+	func isPossible(word: String) -> Bool {
+		return true
+	}
+
+	func isOriginal(word: String) -> Bool {
+		return true
+	}
+
+	func isReal(word: String) -> Bool {
+		return true
+	}
+
 	// MARK: - Table view data source
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
