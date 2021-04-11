@@ -52,7 +52,7 @@ class ViewController: UITableViewController {
 	}
 
 	func submit(_ answer: String) {
-		// more code here
+		let lowerAnswer = answer.lowercased()
 	}
 
 	func isPossible(word: String) -> Bool {
