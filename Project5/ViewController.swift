@@ -11,6 +11,7 @@ class ViewController: UITableViewController {
 
 	var allWords = [String]()
 	var usedWords = [String]()
+	var referenceWord: String?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -29,11 +30,13 @@ class ViewController: UITableViewController {
 			allWords = ["silkworm"]
 		}
 
+		referenceWord = allWords.randomElement()!
+
 		startGame()
 	}
 
 	@objc func startGame() {
-		title = allWords.randomElement()
+		title = referenceWord
 		usedWords.removeAll(keepingCapacity: true)
 		tableView.reloadData()
 	}
