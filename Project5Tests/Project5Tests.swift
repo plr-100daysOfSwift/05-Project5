@@ -18,20 +18,19 @@ class Project5Tests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-	func testIsReal_WhenQuestionEqualsAnswer_ReturnsFalse() {
+	func testIsReal_WhenInputEqualsReferenceWord_ShouldReturnFalse() {
 		// Arrange
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		if let vc = storyboard.instantiateViewController(identifier: "ViewController") as? ViewController {
 
 			vc.loadViewIfNeeded()
 
-			let question = vc.referenceWord
-			let answer = question
+			let input = vc.referenceWord!
 
 			// Act
 
 			// Assert
-			XCTAssertFalse(vc.isReal(word: answer!), "isReal should return false when question and answer are the same")
+			XCTAssertFalse(vc.isReal(word: input), "isReal should return false when user input and reference word are the same")
 		}
 
 	}
