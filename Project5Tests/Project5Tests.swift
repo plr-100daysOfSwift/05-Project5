@@ -18,16 +18,22 @@ class Project5Tests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+	func testIsReal_WhenQuestionEqualsAnswer_ReturnsFalse() {
+		// Arrange
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		if let vc = storyboard.instantiateViewController(identifier: "ViewController") as? ViewController {
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+			vc.loadViewIfNeeded()
+
+			let question = vc.referenceWord
+			let answer = question
+
+			// Act
+
+			// Assert
+			XCTAssertFalse(vc.isReal(word: answer!), "isReal should return false when question and answer are the same")
+		}
+
+	}
 
 }
