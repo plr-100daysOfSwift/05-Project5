@@ -31,7 +31,14 @@ class ViewController: UITableViewController {
 			allWords = ["silkworm"]
 		}
 
-		newGame()
+		if let usedWords = defaults.object(forKey: "UsedWords") as? [String] {
+			referenceWord = defaults.string(forKey: "Word")
+			title = referenceWord
+			self.usedWords = usedWords
+		} else {
+			newGame()
+		}
+
 	}
 
 	@objc func newGame() {
