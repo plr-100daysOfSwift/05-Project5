@@ -12,6 +12,7 @@ class ViewController: UITableViewController {
 	var allWords = [String]()
 	var usedWords = [String]()
 	var referenceWord: String?
+	var defaults = UserDefaults.standard
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -63,6 +64,7 @@ class ViewController: UITableViewController {
 			if isOriginal(word: lowerAnswer) {
 				if isReal(word: lowerAnswer) {
 					usedWords.insert(lowerAnswer, at: 0)
+					defaults.set(usedWords, forKey: "UsedWords")
 					let indexPath = IndexPath(row: 0, section: 0)
 					tableView.insertRows(at: [indexPath], with: .automatic)
 					return
