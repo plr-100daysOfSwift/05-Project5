@@ -12,14 +12,13 @@ class ViewController: UITableViewController {
 	var allWords = [String]()
 	var usedWords = [String]()
 	var referenceWord: String?
-	var defaults = UserDefaults.standard
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
 
-		navigationItem.leftBarButtonItem = UIBarButtonItem(title: "New Game", style: .plain, target: self, action: #selector(newGame))
+		navigationItem.leftBarButtonItem = UIBarButtonItem(title: "New Game", style: .plain, target: self, action: #selector(startGame))
 
 		if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
 			if let startWords = try? String(contentsOf: startWordsURL) {
@@ -31,24 +30,15 @@ class ViewController: UITableViewController {
 			allWords = ["silkworm"]
 		}
 
-		if let usedWords = defaults.object(forKey: "UsedWords") as? [String] {
-			referenceWord = defaults.string(forKey: "Word")
-			title = referenceWord
-			self.usedWords = usedWords
-		} else {
-			newGame()
-		}
+		referenceWord = allWords.randomElement()!
 
+		startGame()
 	}
 
-	@objc func newGame() {
-		referenceWord = allWords.randomElement()!
+	@objc func startGame() {
 		title = referenceWord
 		usedWords.removeAll(keepingCapacity: true)
 		tableView.reloadData()
-
-		defaults.set(referenceWord, forKey: "Word")
-		defaults.set(usedWords, forKey: "UsedWords")
 	}
 
 	@objc func promptForAnswer() {
@@ -73,7 +63,6 @@ class ViewController: UITableViewController {
 			if isOriginal(word: lowerAnswer) {
 				if isReal(word: lowerAnswer) {
 					usedWords.insert(lowerAnswer, at: 0)
-					defaults.set(usedWords, forKey: "UsedWords")
 					let indexPath = IndexPath(row: 0, section: 0)
 					tableView.insertRows(at: [indexPath], with: .automatic)
 					return
