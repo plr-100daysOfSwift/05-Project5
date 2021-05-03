@@ -19,7 +19,7 @@ class ViewController: UITableViewController {
 
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
 
-		navigationItem.leftBarButtonItem = UIBarButtonItem(title: "New Game", style: .plain, target: self, action: #selector(startGame))
+		navigationItem.leftBarButtonItem = UIBarButtonItem(title: "New Game", style: .plain, target: self, action: #selector(newGame))
 
 		if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
 			if let startWords = try? String(contentsOf: startWordsURL) {
@@ -31,15 +31,17 @@ class ViewController: UITableViewController {
 			allWords = ["silkworm"]
 		}
 
-		referenceWord = allWords.randomElement()!
-
-		startGame()
+		newGame()
 	}
 
-	@objc func startGame() {
+	@objc func newGame() {
+		referenceWord = allWords.randomElement()!
 		title = referenceWord
 		usedWords.removeAll(keepingCapacity: true)
 		tableView.reloadData()
+
+		defaults.set(referenceWord, forKey: "Word")
+		defaults.set(usedWords, forKey: "UsedWords")
 	}
 
 	@objc func promptForAnswer() {
