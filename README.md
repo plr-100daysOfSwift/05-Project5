@@ -11,3 +11,7 @@ Hacking with Swift: 100 Days of Swift - Project 5
 Bonus: Once you’ve done those three, there’s a really subtle bug in our game and I’d like you to try finding and fixing it.
 
 To trigger the bug, look for a three-letter word in your starting word, and enter it with an uppercase letter. Once it appears in the table, try entering it again all lowercase – you’ll see it gets entered. Can you figure out what causes this and how to fix it?
+
+## Projetc 12 - Challenge 3
+
+3. Modify Project 5 so that it saves the current word and all the player’s entries to UserDefaults, then loads them back when the app launches.
