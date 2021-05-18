@@ -54,6 +54,14 @@ class ViewController: UITableViewController {
 	}
 
 	func submit(_ answer: String) {
+		
+		/*
+		Project 18 - Challenge 3
+		Conditional breakpoint
+		if answer.count > 5
+		p "\(answer) has \(answer.count) characters"
+		*/
+
 		let lowerAnswer = answer.lowercased()
 
 		if isPossible(word: lowerAnswer) {
